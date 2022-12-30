@@ -34,8 +34,8 @@ const Home = () => {
 
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
-                    <TodoSection title="Tasks" todos={incompleteTodos} action={markStaticTodo} />
-
+                    {/* <TodoSection title="Tasks" todos={incompleteTodos} action={markStaticTodo} /> */}
+                    <TodoSection title="Tasks" todos={incompleteTodos} action={markTodo} />
                     <TodoSection title="Completed" todos={completedTodos} action={removeStaticTodo} />
                 </Loading>
             </div>
