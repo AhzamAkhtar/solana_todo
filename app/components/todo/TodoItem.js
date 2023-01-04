@@ -1,7 +1,7 @@
 import styles from '../../styles/Todo.module.css'
 import { CalendarIcon, TrashIcon } from '@heroicons/react/outline'
 
-const TodoItem = ({ idx, content, marked, dateline, publicKey, action }) => {
+const TodoItem = ({ idx, content, marked, dateline, publicKey, action , tag , assigne}) => {
     const handleMarkTodo = () => {
         // Only allow unchecked todo to be marked
         if (marked) return
@@ -23,6 +23,8 @@ const TodoItem = ({ idx, content, marked, dateline, publicKey, action }) => {
             <div onClick={handleMarkTodo} className={`${styles.todoCheckbox} ${marked && styles.checked}`} />
             <div>
                 <span className="todoText">{content}</span>
+                <h1>{tag}</h1>
+                <h1>{assigne}</h1>
                 {dateline && (
                     <div className={styles.todoDateline}>
                         <CalendarIcon className={styles.calendarIcon} />

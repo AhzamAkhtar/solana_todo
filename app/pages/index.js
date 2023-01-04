@@ -3,11 +3,14 @@ import { useTodo } from '../hooks/todo'
 import Loading from '../components/Loading'
 import TodoSection from '../components/todo/TodoSection'
 import styles from '../styles/Home.module.css'
+import { useState } from 'react'
 
 
 const Home = () => {
     const { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, addTodo, markTodo, removeTodo, markStaticTodo,removeStaticTodo, addStaticTodo, input,tag  , assigne  , tagHandleChange , assigneChangeHandler,  handleChange , initializeUser } = useTodo()
 
+    const [finalTag,setFinalTag] = useState("")
+    const [finalAssigne,setFinalAssigne] = useState("")
 
     return (
         <div className={styles.container}>
@@ -21,9 +24,14 @@ const Home = () => {
                                 <input value = {tag} onChange={tagHandleChange} id={styles.inputField} type="text" placeholder='Create a new todo...' />
                                 
                                 <input value = {assigne} onChange={assigneChangeHandler} id={styles.inputField} type="text" placeholder='Create a new todo...' />
-
-
-                            <button onClick={addTodo}>Submit</button>    
+                                
+                            
+                            <button onClick={()=>{
+                                addTodo()
+                                setFinalTag(tag)
+                                setFinalAssigne(assigne)
+                                console.log(finalTag)
+                            }}>Submit</button>    
       
                            
                         </div>
@@ -42,9 +50,9 @@ const Home = () => {
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
                     {/* <TodoSection title="Tasks" todos={incompleteTodos} action={markStaticTodo} /> */}
-                    <TodoSection title="Tasks" todos={incompleteTodos} action={markTodo} />
+                    <TodoSection title="Tasks" todos={incompleteTodos} tag={finalTag} assigne = {finalAssigne} action={markTodo} />
                     {/* <TodoSection title="Completed" todos={completedTodos} action={removeStaticTodo} /> */}
-                    <TodoSection title="Completed" todos={completedTodos} action={removeTodo} />
+                    <TodoSection title="Completed" todos={completedTodos} assigne = {finalAssigne} tag={finalTag} action={removeTodo} />
                 </Loading>
             </div>
         </div>

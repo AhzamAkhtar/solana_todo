@@ -150,7 +150,7 @@ export function useTodo() {
     }
 
     const addTodo = async (e) =>{
-        e.preventDefault()
+        //e.preventDefault()
         if(program && publicKey) {
             try{
                 setTransactionPending(true)
@@ -175,6 +175,8 @@ export function useTodo() {
             } finally {
                 setTransactionPending(false)
                 setInput("")
+                setTag("")
+                setAssigne("")
             }
         }
     }
