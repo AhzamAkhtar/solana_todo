@@ -21,9 +21,9 @@ const Home = () => {
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
                         <div className={styles.inputContainer}>
                                  
-                                <input value = {input} style={{marginTop:"60rem",border:"3px solid #ccc"}} onChange={handleChange} id={styles.inputField} type="text" placeholder=' Enter The Title ......' />
+                                <input value = {input} style={{marginTop:"60rem",border:"3px solid #ccc",padding:"5px"}} onChange={handleChange} id={styles.inputField} type="text" placeholder=' Enter The Title ......' autocomplete="off" />
                                
-                                <input value = {tag} onChange={tagHandleChange}  style={{marginTop:"1rem",border:`2px solid ${borderColor}`}} id={styles.inputField} type="text" placeholder=' Enter The Tag (For ex : Urgent , Major)' />
+                                <input value = {tag} onChange={tagHandleChange}  style={{marginTop:"1rem",border:`2px solid ${borderColor}`,padding:"5px"}} id={styles.inputField} type="text" placeholder=' Enter The Tag (For ex : Urgent , Major)' />
                             
 
                                 <div>
@@ -58,11 +58,24 @@ const Home = () => {
                                selectTagFromTag("TEAM")
                                setBorderColor("#C792DF")
                             }}>TEAM</button>
+
+                               
+<button style={{backgroundColor:"#A2D2FF",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("HELP")
+                               setBorderColor("#A2D2FF")
+                            }}>HELP</button>
+
+<button style={{backgroundColor:"#f77f00",height:"35px",width:"100px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("NEED TALK")
+                               setBorderColor("#f77f00")
+                            }}>NEED TALK</button>
                                 </div>
 
                                 
+
                                 
-                                <input value = {assigne} onChange={assigneChangeHandler}  style={{marginTop:"1rem",border:"3px solid #ccc"}} id={styles.inputField} type="text" placeholder=' Assigned To ....' />
+                                
+                                <input value = {assigne} onChange={assigneChangeHandler}  style={{marginTop:"1rem",border:"3px solid #ccc",padding:"5px"}} id={styles.inputField} type="text" placeholder=' Assigned To ....' autocomplete="off" />
                                  
                             
                             <button style={{backgroundColor:"skyblue",height:"50px",width:"150px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
