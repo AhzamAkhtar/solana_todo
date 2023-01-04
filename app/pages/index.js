@@ -7,26 +7,65 @@ import { useState } from 'react'
 
 
 const Home = () => {
-    const { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, addTodo, markTodo, removeTodo, markStaticTodo,removeStaticTodo, addStaticTodo, input,tag  , assigne  , tagHandleChange , assigneChangeHandler,  handleChange , initializeUser } = useTodo()
+    const { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, addTodo, markTodo, removeTodo, markStaticTodo,removeStaticTodo, addStaticTodo, input,tag  , assigne  , tagHandleChange , assigneChangeHandler,  handleChange , initializeUser , selectTagFromTag } = useTodo()
 
     const [finalTag,setFinalTag] = useState("")
     const [finalAssigne,setFinalAssigne] = useState("")
-
+    const [borderColor, setBorderColor] = useState("#ccc")
     return (
-        <div className={styles.container}>
+        <div >
             <div className={styles.actionsContainer}>
                 {initialized ? (
                     <div className={styles.todoInput}>
+                    <h1 style={{textAlign:"center",marginLeft:"100px" , fontSize:"20px"}}>PROJECT MANAGER DAPP POWERED BY SOLANA</h1>
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
                         <div className={styles.inputContainer}>
+                                 
+                                <input value = {input} style={{marginTop:"60rem"}} onChange={handleChange} id={styles.inputField} type="text" placeholder=' Enter The Title' />
+                               
+                                <input value = {tag} onChange={tagHandleChange}  style={{marginTop:"1rem",border:`2px solid ${borderColor}`}} id={styles.inputField} type="text" placeholder=' Enter The Tag (For ex : Urgent , Major)' />
                             
-                                <input value = {input} onChange={handleChange} id={styles.inputField} type="text" placeholder='Create a new todo...' />
-                                <input value = {tag} onChange={tagHandleChange} id={styles.inputField} type="text" placeholder='Create a new todo...' />
-                                
-                                <input value = {assigne} onChange={assigneChangeHandler} id={styles.inputField} type="text" placeholder='Create a new todo...' />
-                                
+
+                                <div>
+                                <button style={{backgroundColor:"lightgreen",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("MAJOR")
+                               setBorderColor("lightgreen")
+                            }}>MAJOR</button>  
+
+                            <button style={{backgroundColor:"#EBB9DF",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("URGENT")
+                               setBorderColor("#EBB9DF")
+                            }}>URGENT</button> 
+
+<button style={{backgroundColor:"#FD3E81",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("BUG")
+                               setBorderColor("#FD3E81")
+                            }}>BUG</button>
+
+<button style={{backgroundColor:"#EB9486",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("NEW")
+                               setBorderColor("#EB9486")
+                            }}>NEW</button>
+
                             
-                            <button onClick={()=>{
+<button style={{backgroundColor:"#F3DE8A",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("MINOR")
+                               setBorderColor("#F3DE8A")
+                            }}>MINOR</button>
+
+                            
+<button style={{backgroundColor:"#C792DF",height:"35px",width:"80px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
+                               selectTagFromTag("TEAM")
+                               setBorderColor("#C792DF")
+                            }}>TEAM</button>
+                                </div>
+
+                                
+                                
+                                <input value = {assigne} onChange={assigneChangeHandler}  style={{marginTop:"1rem"}} id={styles.inputField} type="text" placeholder='Assigned To....' />
+                                 
+                            
+                            <button style={{backgroundColor:"skyblue",height:"50px",width:"150px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
                                 addTodo()
                                 setFinalTag(tag)
                                 setFinalAssigne(assigne)

@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>Todo App</title>
+                <title>Project Management DApp</title>
             </Head>
             <main>
                 {/* Wrap provider around App */}

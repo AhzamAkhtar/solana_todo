@@ -73,6 +73,9 @@ export function useTodo() {
     const [tag,setTag] = useState("")
     const [assigne , setAssigne] = useState("")
 
+
+    const [tagFromTag , SetTagFromTag] = useState("")
+
     const program = useMemo(() => {
         if (anchorWallet) {
             const provider = new anchor.AnchorProvider(connection, anchorWallet, anchor.AnchorProvider.defaultOptions())
@@ -119,6 +122,11 @@ export function useTodo() {
 
     const assigneChangeHandler = (e) => {
         setAssigne(e.target.value)
+    }
+
+
+    const selectTagFromTag = (tag) => {
+        setTag(tag)
     }
   
     const initializeUser = async () => {
@@ -286,5 +294,5 @@ export function useTodo() {
     const incompleteTodos = useMemo(() => todos.filter((todo) => !todo.account.marked), [todos])
     const completedTodos = useMemo(() => todos.filter((todo) => todo.account.marked), [todos])
 
-    return { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, markStaticTodo, removeStaticTodo, addStaticTodo, input, tag ,assigne ,  setInput, handleChange  , tagHandleChange , assigneChangeHandler ,  initializeUser, addTodo , markTodo,removeTodo}
+    return { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, markStaticTodo, removeStaticTodo, addStaticTodo, input, tag ,assigne ,  setInput, handleChange  , tagHandleChange , assigneChangeHandler ,  initializeUser, addTodo , markTodo,removeTodo , selectTagFromTag}
 }
