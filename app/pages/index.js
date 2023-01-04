@@ -86,7 +86,7 @@ const Home = () => {
                 <WalletMultiButton />
             </div>
 
-            <div className={styles.mainContainer}>
+            <div >
                 <Loading loading={loading}>
                     {/* <TodoSection title="Tasks" todos={incompleteTodos} action={markStaticTodo} /> */}
                     <TodoSection title="Tasks" todos={incompleteTodos} tag={finalTag} assigne = {finalAssigne} action={markTodo} />
