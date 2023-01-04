@@ -70,7 +70,8 @@ export function useTodo() {
     const [loading, setLoading] = useState(false)
     const [transactionPending, setTransactionPending] = useState(false)
     const [input, setInput] = useState("")
-
+    const [tag,setTag] = useState("")
+    const [assigne , setAssigne] = useState("")
 
     const program = useMemo(() => {
         if (anchorWallet) {
@@ -112,6 +113,13 @@ export function useTodo() {
     const handleChange = (e)=> {
         setInput(e.target.value)
     }
+    const tagHandleChange = (e) => {
+        setTag(e.target.value)
+    }
+
+    const assigneChangeHandler = (e) => {
+        setAssigne(e.target.value)
+    }
   
     const initializeUser = async () => {
         // Check if the program exist and wallet is connected
@@ -148,9 +156,9 @@ export function useTodo() {
                 setTransactionPending(true)
                 const [profilePda , profileBump] = findProgramAddressSync([utf8.encode('USER_STATE'), publicKey.toBuffer()], program.programId)
                 const [todoPda,todoBump] = findProgramAddressSync([utf8.encode('TODO_STATE'), publicKey.toBuffer(), Uint8Array.from([lastTodo])], program.programId)
-                if(input){
+                if(input && tag && assigne){
                     await program.methods
-                    .addTodo(input)
+                    .addTodo(input,tag,assigne)
                     .accounts({
                         userProfile : profilePda,
                         todoAccount : todoPda,
@@ -276,5 +284,5 @@ export function useTodo() {
     const incompleteTodos = useMemo(() => todos.filter((todo) => !todo.account.marked), [todos])
     const completedTodos = useMemo(() => todos.filter((todo) => todo.account.marked), [todos])
 
-    return { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, markStaticTodo, removeStaticTodo, addStaticTodo, input, setInput, handleChange , initializeUser, addTodo , markTodo,removeTodo}
+    return { initialized, initializeStaticUser, loading, transactionPending, completedTodos, incompleteTodos, markStaticTodo, removeStaticTodo, addStaticTodo, input, tag ,assigne ,  setInput, handleChange  , tagHandleChange , assigneChangeHandler ,  initializeUser, addTodo , markTodo,removeTodo}
 }
