@@ -22,9 +22,9 @@ const TodoItem = ({ idx, content, marked, dateline, publicKey, action , tag , as
         <li key={idx} className={styles.todoItem}>
             <div onClick={handleMarkTodo} className={`${styles.todoCheckbox} ${marked && styles.checked}`} />
             <div>
-                <span className="todoText">{content}</span>
-                <h1>{tag}</h1>
-                <h1>{assigne}</h1>
+                <span className="todoText" style={{color:"#00bbf9",fontSize:"20px"}}>{content}</span>
+                <h1 style={{color:"#00f5d4",fontSize:"15px",marginTop:"5px"}}>{"TAG - "+tag}</h1>
+                <h1 style={{color:"#00f5d4",fontSize:"15px",marginTop:"5px"}}>{"ASSIGNED TO - "+assigne}</h1>
                 {dateline && (
                     <div className={styles.todoDateline}>
                         <CalendarIcon className={styles.calendarIcon} />

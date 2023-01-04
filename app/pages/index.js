@@ -11,17 +11,17 @@ const Home = () => {
 
     const [finalTag,setFinalTag] = useState("")
     const [finalAssigne,setFinalAssigne] = useState("")
-    const [borderColor, setBorderColor] = useState("#ccc")
+    const [borderColor, setBorderColor] = useState("#ffb703")
     return (
         <div >
             <div className={styles.actionsContainer}>
                 {initialized ? (
                     <div className={styles.todoInput}>
-                    <h1 style={{textAlign:"center",marginLeft:"100px" , fontSize:"20px"}}>PROJECT MANAGER DAPP POWERED BY SOLANA</h1>
+                    <h1 style={{textAlign:"left",marginLeft:"10px" , fontSize:"20px",color:"#ffb703"}}>PROJECT MANAGER DAPP POWERED BY SOLANA</h1>
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
                         <div className={styles.inputContainer}>
                                  
-                                <input value = {input} style={{marginTop:"60rem"}} onChange={handleChange} id={styles.inputField} type="text" placeholder=' Enter The Title' />
+                                <input value = {input} style={{marginTop:"60rem",border:"3px solid #ccc"}} onChange={handleChange} id={styles.inputField} type="text" placeholder=' Enter The Title ......' />
                                
                                 <input value = {tag} onChange={tagHandleChange}  style={{marginTop:"1rem",border:`2px solid ${borderColor}`}} id={styles.inputField} type="text" placeholder=' Enter The Tag (For ex : Urgent , Major)' />
                             
@@ -62,7 +62,7 @@ const Home = () => {
 
                                 
                                 
-                                <input value = {assigne} onChange={assigneChangeHandler}  style={{marginTop:"1rem"}} id={styles.inputField} type="text" placeholder='Assigned To....' />
+                                <input value = {assigne} onChange={assigneChangeHandler}  style={{marginTop:"1rem",border:"3px solid #ccc"}} id={styles.inputField} type="text" placeholder=' Assigned To ....' />
                                  
                             
                             <button style={{backgroundColor:"skyblue",height:"50px",width:"150px",marginLeft:"15px",borderRadius:"10px",marginTop:"20px"}} onClick={()=>{
